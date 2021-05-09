@@ -1,0 +1,9 @@
+
+1. data 'GET' apply for hole objects to view
+
+>http http://127.0.0.1:8000/student/
+
+2. for Specific data 'GET' and view object only
+
+>http http://127.0.0.1:8000/student/2/
+

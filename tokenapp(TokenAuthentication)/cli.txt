@@ -1,0 +1,193 @@
+
+1. data 'GET' apply for hole objects to view
+
+>http GET http://127.0.0.1:8000/student/ "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+
+2. for Specific data 'GET' and view object only
+
+>http GET http://127.0.0.1:8000/student/2/ "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+
+3. for Post apply
+
+>http -f POST http://127.0.0.1:8000/student/ name=deepak roll=104 city=delhi "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+
+4. for put apply
+
+>http PUT http://127.0.0.1:8000/student/1/ name=karan roll=225 city=unnao "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+
+5. for delete apply
+
+>http DELETE http://127.0.0.1:8000/student/1/ "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+
+
+Microsoft Windows [Version 10.0.19042.906]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>http GET http://127.0.0.1:8000/student/ "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+HTTP/1.1 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 152
+Content-Type: application/json
+Date: Sun, 09 May 2021 20:57:42 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+[
+    {
+        "city": "mumbai",
+        "id": 1,
+        "name": "suraj",
+        "roll": 101
+    },
+    {
+        "city": "pune",
+        "id": 2,
+        "name": "rishi",
+        "roll": 102
+    },
+    {
+        "city": "nasik",
+        "id": 3,
+        "name": "rupesh",
+        "roll": 103
+    }
+]
+
+
+
+C:\Windows\system32>http -f POST http://127.0.0.1:8000/student/ name=deepak roll=104 city=delhi "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+HTTP/1.1 201 Created
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 50
+Content-Type: application/json
+Date: Sun, 09 May 2021 21:05:20 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "city": "delhi",
+    "id": 4,
+    "name": "deepak",
+    "roll": 104
+}
+
+
+
+C:\Windows\system32>http PUT http://127.0.0.1:8000/student/1/ name=karan roll=225 city=unnao "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+HTTP/1.1 200 OK
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+Content-Length: 49
+Content-Type: application/json
+Date: Sun, 09 May 2021 21:07:09 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "city": "unnao",
+    "id": 1,
+    "name": "karan",
+    "roll": 225
+}
+
+
+
+C:\Windows\system32>http GET http://127.0.0.1:8000/student/ "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+HTTP/1.1 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 202
+Content-Type: application/json
+Date: Sun, 09 May 2021 21:07:21 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+[
+    {
+        "city": "unnao",
+        "id": 1,
+        "name": "karan",
+        "roll": 225
+    },
+    {
+        "city": "pune",
+        "id": 2,
+        "name": "rishi",
+        "roll": 102
+    },
+    {
+        "city": "nasik",
+        "id": 3,
+        "name": "rupesh",
+        "roll": 103
+    },
+    {
+        "city": "delhi",
+        "id": 4,
+        "name": "deepak",
+        "roll": 104
+    }
+]
+
+
+
+C:\Windows\system32>http DELETE http://127.0.0.1:8000/student/1/ "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+HTTP/1.1 204 No Content
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+Content-Length: 0
+Date: Sun, 09 May 2021 21:10:35 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+
+
+
+C:\Windows\system32>http GET http://127.0.0.1:8000/student/ "Authorization: Token dfaa069b8ca2967b1b1659f9d473239fbf5130f3"
+HTTP/1.1 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 152
+Content-Type: application/json
+Date: Sun, 09 May 2021 21:10:39 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+[
+    {
+        "city": "pune",
+        "id": 2,
+        "name": "rishi",
+        "roll": 102
+    },
+    {
+        "city": "nasik",
+        "id": 3,
+        "name": "rupesh",
+        "roll": 103
+    },
+    {
+        "city": "delhi",
+        "id": 4,
+        "name": "deepak",
+        "roll": 104
+    }
+]
+
+
+
+C:\Windows\system32>
