@@ -1,0 +1,182 @@
+(venv) PS C:\Users\suraj\Desktop\Projects\API-token> http POST http://127.0.0.1:8000/gettoken/ username="user1" password="Admin12345"
+HTTP/1.1 200 OK
+Allow: POST, OPTIONS
+Content-Length: 438
+Content-Type: application/json
+Date: Mon, 10 May 2021 20:08:26 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjc3NjA2LCJqdGkiOiIzNGFkM2Q5MDAxYzI0MmZkYWE4NDE3MjJlODA5ZTEzOSIsInVzZXJfaWQiOjJ9.2WOxAZAkFkOOqsn-lForaDpwzGJ3CRJPkSan6BkEZhs",
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyMDc2MzcwNiwianRpIjoiNDA4ODJhYTE4YzgyNGFiOWEzZWRkMWY4OGQ0YWNiOGIiLCJ1c2VyX2lkIjoyfQ.OJKYnyAsyXZiiJSjyq2F3U_NtcsX9IMcDG7Tq495ecw"
+}
+
+
+(venv) PS C:\Users\suraj\Desktop\Projects\API-token> http POST http://127.0.0.1:8000/verifytoken/ token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjc3NjA2LCJqdGkiOiIzNGFkM2Q5MDAxYzI0MmZkYWE4NDE3MjJlODA5ZTEzOSIsInVzZXJfaWQiOjJ9.2WOxAZAkFkOOqsn-lForaDpwzGJ3CRJPkSan6BkEZhs"
+HTTP/1.1 200 OK
+Allow: POST, OPTIONS
+Content-Length: 2
+Content-Type: application/json
+Date: Mon, 10 May 2021 20:09:37 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{}
+
+
+(venv) PS C:\Users\suraj\Desktop\Projects\API-token> http POST http://127.0.0.1:8000/refreshtoken/ refresh="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyMDc2NDAwMSwianRpIjoiODI1MDhhOTcxZTA1NGY5YThiMzMwYzk4MzNjMTdiNjYiLCJ1c2VyX2lkIjoyfQ.2NE2cUIbIGV9JzE_flqE34JNz-8d-T6pS_bfMsAE8rQ"
+HTTP/1.1 200 OK
+Allow: POST, OPTIONS
+Content-Length: 218
+Content-Type: application/json
+Date: Mon, 10 May 2021 20:14:56 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjc3OTk2LCJqdGkiOiJiOTI5OTZmMDdkODQ0YzM1YTg5ZjM1MTU0MTgxNGM2MCIsInVzZXJfaWQiOjJ9.cIQr1ksoCHeGoQnIRqM9U4iFMrZH1RQt-b8vLGmu3V0"
+}
+
+
+======================Views.py==================
+from rest_framework_simplejwt.authentication import JWTAuthentication
+===================================================================
+
+(venv) PS C:\Users\suraj\Desktop\Projects\API-token> http GET http://127.0.0.1:8000/student/
+HTTP/1.1 401 Unauthorized      
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 58
+Content-Type: application/json 
+Date: Mon, 10 May 2021 20:21:58 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+WWW-Authenticate: Bearer realm="api"
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "detail": "Authentication credentials were not provided."
+}
+
+
+-------------------- for token_Genrate -------------------
+http POST http://127.0.0.1:8000/gettoken/ username="user1" password="Admin12345"
+HTTP/1.1 200 OK
+Allow: POST, OPTIONS
+Content-Length: 438
+Content-Type: application/json
+Date: Mon, 10 May 2021 20:44:03 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjc5NzQzLCJqdGkiOiIzMDE1ZjcxMzNiMDM0YzJjYTZlMGNlZGJjZDk4M2IxOCIsInVzZXJfaWQiOjJ9.1ypZZ7AB18g7tDW5qJ_HVOXzUeUMYKvIMvLA5wZaXv8",
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyMDc2NTg0MywianRpIjoiNTQ5MTBkZjIwMjhhNDNkNDk5ZjgyYWNhZDlhMzJiNWYiLCJ1c2VyX2lkIjoyfQ.U_2nnxC28d8tV88_rKQpaXe50TXonXJTuqMn6RrEdOg"
+}
+
+-------------------- for token_verify -------------------
+C:\Users\suraj>http POST http://127.0.0.1:8000/verifytoken/ token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjgwMjU4LCJqdGkiOiJkMWZiNDlmNWQxNTk0NDY2OWMyMTdlNzA4ZmRjNzZkYiIsInVzZXJfaWQiOjJ9.K7b0t6QFend4pT6ly3Izb6Dqxt4atyQsxoIcwxb3l70"
+HTTP/1.1 200 OK
+Allow: POST, OPTIONS
+Content-Length: 2
+Content-Type: application/json
+Date: Mon, 10 May 2021 20:53:07 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{}
+
+-------------------- for token_refresh -------------------
+C:\Users\suraj>http POST http://127.0.0.1:8000/refreshtoken/ refresh="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyMDc2NTg0MywianRpIjoiNTQ5MTBkZjIwMjhhNDNkNDk5ZjgyYWNhZDlhMzJiNWYiLCJ1c2VyX2lkIjoyfQ.U_2nnxC28d8tV88_rKQpaXe50TXonXJTuqMn6RrEdOg"
+HTTP/1.1 200 OK
+Allow: POST, OPTIONS
+Content-Length: 218
+Content-Type: application/json
+Date: Mon, 10 May 2021 20:52:38 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjgwMjU4LCJqdGkiOiJkMWZiNDlmNWQxNTk0NDY2OWMyMTdlNzA4ZmRjNzZkYiIsInVzZXJfaWQiOjJ9.K7b0t6QFend4pT6ly3Izb6Dqxt4atyQsxoIcwxb3l70"
+}
+
+=================================== send GET with token ===================
+C:\Users\suraj>http http://127.0.0.1:8000/student/ "Authorization:bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjgwMjU4LCJqdGkiOiJkMWZiNDlmNWQxNTk0NDY2OWMyMTdlNzA4ZmRjNzZkYiIsInVzZXJfaWQiOjJ9.K7b0t6QFend4pT6ly3Izb6Dqxt4atyQsxoIcwxb3l70"
+HTTP/1.1 401 Unauthorized
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 58
+Content-Type: application/json
+Date: Mon, 10 May 2021 20:54:13 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+WWW-Authenticate: Bearer realm="api"
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "detail": "Authentication credentials were not provided."
+}
+
+C:\Users\suraj>http http://127.0.0.1:8000/student/ "Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjgyNDAzLCJqdGkiOiIyZGFmZGJlZWFiYmY0MjA5OTYyOTAyNzYwY2IxOWUxOCIsInVzZXJfaWQiOjJ9.9mHueLRbgiDXPFE4YQNnvbhKYIsv_m86dEVFAmQMsV4"
+HTTP/1.1 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 203
+Content-Type: application/json
+Date: Mon, 10 May 2021 21:30:25 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.5
+Vary: Accept
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+[
+    {
+        "city": "pune",
+        "id": 2,
+        "name": "rishi",
+        "roll": 102
+    },
+    {
+        "city": "nasik",
+        "id": 3,
+        "name": "rupesh",
+        "roll": 103
+    },
+    {
+        "city": "delhi",
+        "id": 4,
+        "name": "deepak",
+        "roll": 104
+    },
+    {
+        "city": "delhi",
+        "id": 5,
+        "name": "deepak",
+        "roll": 104
+    }
+]
+
+
+
+
