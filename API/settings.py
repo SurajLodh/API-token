@@ -133,6 +133,9 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES':{
         'anon': '2/day',
         'user': '4/hour',
-        'UserThrottle': '10/hour'
+        'UserThrottle': '10/hour',  #customUserRateThrottle
+        'bank': '100/hour',         #scopeDefine Peruser Restriction
+        'cusomer': '10/hour',
+        'admin': '1000/day',
     }
 }
