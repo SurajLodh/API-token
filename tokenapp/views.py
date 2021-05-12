@@ -5,6 +5,7 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
+from .CustomUserRateThrottle import CustomUserThrottle
 
 #For_Complete_CRUD
 class StudentViewset(viewsets.ModelViewSet):
@@ -12,4 +13,7 @@ class StudentViewset(viewsets.ModelViewSet):
         serializer_class = StudentSerializer
         authentication_classes = [JWTAuthentication]
         permission_classes = [IsAuthenticatedOrReadOnly]   
-        throttle_classes = [AnonRateThrottle, UserRateThrottle]
+        # throttle_classes = [AnonRateThrottle, UserRateThrottle]  #for Default UserRateThrottle
+        throttle_classes = [AnonRateThrottle, CustomUserThrottle]
+
+        
