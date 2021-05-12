@@ -112,6 +112,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME':timedelta(minutes=10)
+}
+
 JWT_AUTH = {
     # Authorization:Token xxx
     'JWT_AUTH_HEADER_PREFIX': 'Token',
