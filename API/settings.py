@@ -112,6 +112,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#for SimpleJWT Global settings 
 from datetime import timedelta
 
 SIMPLE_JWT = {
@@ -121,4 +122,16 @@ SIMPLE_JWT = {
 JWT_AUTH = {
     # Authorization:Token xxx
     'JWT_AUTH_HEADER_PREFIX': 'Token',
+}
+
+#for THROTTLING Default setting apply Globally on views.py 
+REST_FRAMEWORK = {
+    # 'DEFAULT_THROTTLING_CLASSES':[
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle',
+    # ],
+    'DEFAULT_THROTTLE_RATES':{
+        'anon': '2/day',
+        'user': '4/hour'
+    }
 }
